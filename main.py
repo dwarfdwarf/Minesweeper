@@ -4,6 +4,29 @@ import random
 height, width = 0, 0
 bombs = 0
 
+def revealSpot(x, y):
+    pass
+
+def revealSurrounding(x, y):
+    pass
+
+def printBoard():
+    for x in range(width):
+        print("-", end="-")
+    print("-", end="-")
+    print("-")
+
+    for x in range(height):
+        print("|", end=" ")
+        for y in range(width):
+            print(visibleBoard[x,y], end=" ")
+        print("|")
+
+    for x in range(width):
+        print("-", end="-")
+    print("-", end="-")
+    print("-")
+
 height = int(input("Enter height: "))
 width = int(input("Enter width: "))
 bombs = int(input("Enter number of bombs: "))
@@ -11,7 +34,7 @@ bombs = int(input("Enter number of bombs: "))
 print(height, " ", width, " ", bombs)
 
 board = np.zeros((height, width))
-revealedBoard = np.zeros((height, width), dtype='S1')
+visibleBoard = np.zeros((height, width), dtype='str')
 
 random_x=0
 random_y=0
@@ -36,7 +59,8 @@ for x in range(height):
                         counter += 1
             board[x,y] = counter
 
-print(board)
+for x in range(height):
+    for y in range(width):
+        visibleBoard[x,y] = "X"
 
-def revealSpot(x, y):
-    pass
+printBoard()
